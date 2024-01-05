@@ -1,4 +1,4 @@
-package simple;
+package test_basic;
 
 import io.restassured.RestAssured;
 import org.junit.Before;
@@ -69,10 +69,6 @@ public class Get02_Detailed {
                 .body("categories", hasItem(equalTo(1)))   // [1,3,5]
                 .body("categories.size()", equalTo(1));     // 5 - OK
                 // find Post with few categories
-
-
-
-
 
         long endTime = System.currentTimeMillis();
         System.out.println("responseTime: " + (endTime - startTime));

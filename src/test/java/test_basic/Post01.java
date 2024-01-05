@@ -1,4 +1,4 @@
-package simple;
+package test_basic;
 
 import data.TestCredentials;
 import io.restassured.RestAssured;

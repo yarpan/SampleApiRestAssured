@@ -1,4 +1,4 @@
-package simple;
+package test_basic;
 
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeMethod;

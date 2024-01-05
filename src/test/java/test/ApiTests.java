@@ -1,14 +1,21 @@
-package patterns;
+package test;
 
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import report.ExtentReportListener;
+import page.ApiPage;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import static io.restassured.RestAssured.given;
 import static java.lang.Integer.parseInt;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 @Listeners (ExtentReportListener.class)
 public class ApiTests {
@@ -22,7 +29,7 @@ public class ApiTests {
     SoftAssertions softly = new SoftAssertions();
     public int postId = 11528;
 
-//Class ApiPagePost
+
 
     @Test
     public void createNewPostTest() {
@@ -77,6 +84,19 @@ public class ApiTests {
         softly.assertAll();
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

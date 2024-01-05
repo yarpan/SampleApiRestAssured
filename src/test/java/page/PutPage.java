@@ -1,4 +1,4 @@
-package patterns.pages;
+package page;
 
 public class PutPage {
 }
