@@ -2,22 +2,16 @@ package test;
 
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
-
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import page.ApiPage;
 import page.PostPage;
 import report.ExtentReportListener;
-import page.ApiPage;
-
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import static io.restassured.RestAssured.given;
 import static java.lang.Integer.parseInt;
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.equalTo;
 
 @Listeners (ExtentReportListener.class)
 public class ApiTests {
@@ -29,9 +23,13 @@ public class ApiTests {
     private static final String UPDATED_CONTENT = "Updated content by PUT";
     private ApiPage apiPage = new ApiPage();
     SoftAssertions softly = new SoftAssertions();
-    public int postId = 11528;
+    public int postId;// = 11528;
 
 
+    @BeforeClass
+    public void beforeAll(){
+
+    }
 
     @Test
     public void createNewPostTest() {
@@ -40,6 +38,8 @@ public class ApiTests {
         List<Map<String, String>> gtTranslateKeys = response.jsonPath().getList("title.gt_translate_keys");
         int actualId = parseInt(response.jsonPath().getString("id"));
         Map<String, String> firstKey = gtTranslateKeys.get(0);
+
+        postId = actualId;
 
         softly.assertThat(response.getStatusCode()).as("status code").isEqualTo(EXPECTED_STATUS_CODE_POST);
         Assert.assertTrue(postPage.checkStatusCode(response));

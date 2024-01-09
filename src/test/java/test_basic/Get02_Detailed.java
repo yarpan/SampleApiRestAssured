@@ -31,7 +31,7 @@ public class Get02_Detailed {
                 .get(POSTS_ENDPOINT, postId)
                 .then()
                 .statusCode(EXPECTED_STATUS_CODE)
-                .body(not(empty()))                         // body {}
+                .body(not(empty()))                         // body !{}
                 .body("id", instanceOf(Integer.class))
                 .body("id", notNullValue())              // "id" = null
                 .body("id", not(empty()))                // "id" = ""
