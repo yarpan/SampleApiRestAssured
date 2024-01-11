@@ -10,8 +10,6 @@ public class ApiPage {
     private static final String BASE_URI = "https://dev.emeli.in.ua/wp-json/wp/v2/posts";
     private Response lastResponse;
 
-
-
     public ApiPage() {
         RestAssured.baseURI = BASE_URI;
     }

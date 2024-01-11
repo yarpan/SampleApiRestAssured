@@ -1,4 +1,4 @@
-package test;
+package page;
 
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import page.RequestSpecs;
-import page.PostPage;
 import report.ExtentReportListener;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +31,6 @@ public class ApiTests {
 
     @Test
     public void createNewPostTest() {
-        PostPage postPage = new PostPage();
         Response response = requestSpecs.createNewPost(EXPECTED_TITLE, EXPECTED_CONTENT);
         List<Map<String, String>> gtTranslateKeys = response.jsonPath().getList("title.gt_translate_keys");
         int actualId = parseInt(response.jsonPath().getString("id"));
