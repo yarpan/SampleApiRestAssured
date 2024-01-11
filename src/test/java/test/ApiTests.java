@@ -2,11 +2,10 @@ package test;
 
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import page.ApiPage;
+import page.RequestSpecs;
 import page.PostPage;
 import report.ExtentReportListener;
 import java.util.List;
@@ -21,7 +20,7 @@ public class ApiTests {
     private static final String UPDATED_TITLE = "Updated Put";
     private static final String EXPECTED_CONTENT = "New content for new POST";
     private static final String UPDATED_CONTENT = "Updated content by PUT";
-    private ApiPage apiPage = new ApiPage();
+    private RequestSpecs requestSpecs = new RequestSpecs();
     SoftAssertions softly = new SoftAssertions();
     public int postId;// = 11528;
 
@@ -34,7 +33,7 @@ public class ApiTests {
     @Test
     public void createNewPostTest() {
         PostPage postPage = new PostPage();
-        Response response = apiPage.createNewPost(EXPECTED_TITLE, EXPECTED_CONTENT);
+        Response response = requestSpecs.createNewPost(EXPECTED_TITLE, EXPECTED_CONTENT);
         List<Map<String, String>> gtTranslateKeys = response.jsonPath().getList("title.gt_translate_keys");
         int actualId = parseInt(response.jsonPath().getString("id"));
         Map<String, String> firstKey = gtTranslateKeys.get(0);
@@ -42,10 +41,6 @@ public class ApiTests {
         postId = actualId;
 
         softly.assertThat(response.getStatusCode()).as("status code").isEqualTo(EXPECTED_STATUS_CODE_POST);
-        Assert.assertTrue(postPage.checkStatusCode(response));
-        //softly.assertThat(postPage.checkStatusCode(response),);
-        //softly.assertThat(postPage.checkStatusCode(response).isEqualTo(postPage.EXPECTED_STATUS_CODE_POST);
-
         softly.assertThat(firstKey.get("key")).as("gt_translate_keys key").isEqualTo("rendered");
         softly.assertThat(firstKey.get("format")).as("gt_translate_keys format").isEqualTo("text");
         softly.assertThat(actualId).as("ID").isNotNull();
@@ -64,7 +59,7 @@ public class ApiTests {
 
     @Test
     public void updatePostTest() {
-        Response response = apiPage.updatePost(UPDATED_TITLE, UPDATED_CONTENT, postId);
+        Response response = requestSpecs.updatePost(UPDATED_TITLE, UPDATED_CONTENT, postId);
         System.out.println("postId = " + postId);
         System.out.println(response.asString());
         List<Map<String, String>> gtTranslateKeys = response.jsonPath().getList("title.gt_translate_keys");

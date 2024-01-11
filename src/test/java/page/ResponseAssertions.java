@@ -1,13 +1,13 @@
 package page;
 
+import data.TestData;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import java.util.List;
 import java.util.Map;
 import static java.lang.Integer.parseInt;
 
-public class Assertions {
-    private static final int EXPECTED_STATUS_CODE_POST = 2031;
+public class ResponseAssertions {
 
     public static Map<String, String> getFirstKey(Response response) {
         List<Map<String, String>> gtTranslateKeys = response.jsonPath().getList("title.gt_translate_keys");
@@ -21,7 +21,7 @@ public class Assertions {
     }
 
     public static void assertCode(SoftAssertions softly, Response response) {
-        softly.assertThat(response.getStatusCode()).as("HTTP status code").isEqualTo(EXPECTED_STATUS_CODE_POST);
+        softly.assertThat(response.getStatusCode()).as("HTTP status code").isEqualTo(TestData.EXPECTED_STATUS_CODE_POST);
     }
 
     public static void assertKey(SoftAssertions softly, Response response) {

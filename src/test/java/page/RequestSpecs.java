@@ -1,13 +1,14 @@
 package page;
 
 import data.TestCredentials;
+import data.TestData;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 
-public class ApiPage {
-    private static final String BASE_URI = "https://dev.emeli.in.ua/wp-json/wp/v2/posts";
+public class RequestSpecs {
+
 
     String getResponseBody(String title, String content) {
         return """
@@ -19,8 +20,8 @@ public class ApiPage {
     }
 
 
-    public ApiPage() {
-        RestAssured.baseURI = BASE_URI;
+    public RequestSpecs() {
+        RestAssured.baseURI = TestData.BASE_URI;
     }
 
     public Response createNewPost(String title, String content) {
