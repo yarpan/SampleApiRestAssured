@@ -4,8 +4,8 @@ import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import page.RequestSpecs;
-import page.ResponseAssertions;
+import pattern.RequestSpecs;
+import pattern.ResponseAssertions;
 import report.ExtentReportListener;
 
 

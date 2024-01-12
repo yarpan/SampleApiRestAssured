@@ -1,4 +1,4 @@
-package page;
+package pattern;
 
 import data.TestCredentials;
 import data.TestData;

@@ -1,4 +1,4 @@
-package page;
+package pattern;
 
 import data.TestData;
 import io.restassured.response.Response;

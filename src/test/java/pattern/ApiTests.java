@@ -1,11 +1,10 @@
-package page;
+package pattern;
 
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import page.RequestSpecs;
 import report.ExtentReportListener;
 import java.util.List;
 import java.util.Map;
