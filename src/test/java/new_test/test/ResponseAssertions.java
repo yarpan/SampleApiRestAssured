@@ -1,10 +1,11 @@
-package pattern;
+package new_test.test;
 
-import data.TestData;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
+
 import java.util.List;
 import java.util.Map;
+
 import static java.lang.Integer.parseInt;
 
 public class ResponseAssertions {
