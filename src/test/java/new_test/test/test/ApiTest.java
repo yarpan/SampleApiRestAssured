@@ -34,12 +34,6 @@ public class ApiTest {
         // Log the request and response details for the update
         System.out.println("Update Response: " + updateResponse.getBody().asString());
 
-        // Check the response status for the update
-        //softly.assertThat(updateResponse.getStatusCode()).as("Update Response Code").isEqualTo(200);
-
-        // Perform assertions for the update
-        //performAssertions(softly, updateResponse);
-
         // Fetch the updated post data
         Response getUpdatedPostResponse = apiPage.getPost(postId);
 
@@ -50,14 +44,11 @@ public class ApiTest {
         softly.assertThat(getUpdatedPostResponse.getStatusCode()).as("Get Updated Post Response Code").isEqualTo(200);
 
         // Extract data from the response
-        //String updatedTitleRaw = getUpdatedPostResponse.jsonPath().getString("title.raw");
         String updatedTitleRendered = getUpdatedPostResponse.jsonPath().getString("title.rendered");
         String updatedContentRendered = getUpdatedPostResponse.jsonPath().getString("content.rendered");
 
         // Check if the data has been successfully updated
-        //softly.assertThat(updatedTitleRaw).as("Updated Title raw in the response").isEqualTo("Updated title");
         softly.assertThat(updatedTitleRendered).as("Updated Title rendered in the response").isEqualTo("Updated title");
-        //softly.assertThat(updatedContentRendered).as("Updated Content in the response").isEqualTo("<p>Updated content</p>");
         softly.assertThat(updatedContentRendered.trim()).as("Updated Content in the response").isEqualTo("<p>Updated content</p>");
 
         softly.assertAll();
