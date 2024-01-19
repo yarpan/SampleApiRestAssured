@@ -1,4 +1,4 @@
-package new_test.test.test;
+package test_3;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

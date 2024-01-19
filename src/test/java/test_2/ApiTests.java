@@ -1,14 +1,16 @@
-package pattern.test;
+package test_2;
 
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pattern.RequestSpecs;
+import test_1.RequestSpecs;
 import report.ExtentReportListener;
+
 import java.util.List;
 import java.util.Map;
+
 import static java.lang.Integer.parseInt;
 
 @Listeners (ExtentReportListener.class)
@@ -73,7 +75,7 @@ public class ApiTests {
         softly.assertThat(actualId).as("ID").isNotNull();
         softly.assertThat(actualId).as("ID should be an Integer").isInstanceOf(Integer.class);
         softly.assertThat((Object) response.path("date")).as("Date").isNotNull();
-        softly.assertThat((Object) response.path("status")).as("Status").isEqualTo("drafttttt");
+        softly.assertThat((Object) response.path("status")).as("Status").isEqualTo("draft");
 
         // Check content-type
         String contentType = response.getHeader("Content-Type");

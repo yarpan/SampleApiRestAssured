@@ -1,4 +1,4 @@
-package new_test.test;
+package test_2;
 
 import data.TestCredentials;
 import data.TestData;

@@ -1,12 +1,12 @@
-package new_test.test;
+package test_2;
 
 import data.TestData;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pattern.RequestSpecs;
-import pattern.ResponseAssertions;
+import test_1.RequestSpecs;
+import test_1.ResponseAssertions;
 import report.ExtentReportListener;
 
 
