@@ -31,13 +31,7 @@ public class Get01_Basic {
                 .body("id", notNullValue())              // "id" = null
                 .body("id", not(empty()))                // "id" = ""
                 .body("id",equalTo(postId));
-
-
-
     }
-
-
-
 
 }
 

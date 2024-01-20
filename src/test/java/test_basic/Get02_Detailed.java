@@ -41,7 +41,6 @@ public class Get02_Detailed {
                 .body("date", notNullValue())
                 .body("date", not(empty()))
                 .body("date", matchesPattern("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"))
-                //.body("date", matchesPattern("/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2})$/"))
                 .body("date", equalTo(postDate))
 
                 .body("guid.rendered", instanceOf(String.class))

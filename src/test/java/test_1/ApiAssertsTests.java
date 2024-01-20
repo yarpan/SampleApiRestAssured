@@ -1,4 +1,4 @@
-package test_1.test;
+package test_1;
 
 import data.TestData;
 import io.restassured.response.Response;

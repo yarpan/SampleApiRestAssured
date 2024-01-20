@@ -1,4 +1,4 @@
-package test_2;
+package test_temp;
 
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;

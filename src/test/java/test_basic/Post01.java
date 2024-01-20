@@ -6,11 +6,8 @@ import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.List;
 import java.util.Map;
-
-
 
 public class Post01 {
     private static final String BASE_URI = "https://dev.emeli.in.ua/wp-json/wp/v2/posts";
@@ -104,6 +101,5 @@ public class Post01 {
 
         System.out.println("parseResponse Finished");
     }
-
 
 }

@@ -4,7 +4,6 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
-
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.*;
 
@@ -14,8 +13,6 @@ public class Get04_Cycle {
     private static final int postQuantity = 3;
     private static final String POSTS_ENDPOINT = "/wp-json/wp/v2/posts?per_page=" + postQuantity;
     private static final int EXPECTED_STATUS_CODE = 200;
-
-
 
     @Before
     public void beforeTest() {
@@ -43,7 +40,6 @@ public class Get04_Cycle {
                 }
 
         System.out.println(response.asString());
-
         long endTime = System.currentTimeMillis();
         System.out.println("responseTime: " + (endTime - startTime));
 
