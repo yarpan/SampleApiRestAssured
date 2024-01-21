@@ -1,11 +1,11 @@
 package test_1;
 
+import data.TestData;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import test_1.RequestSpecs;
 import report.ExtentReportListener;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +13,6 @@ import static java.lang.Integer.parseInt;
 
 @Listeners (ExtentReportListener.class)
 public class ApiTests {
-    private static final int EXPECTED_STATUS_CODE_POST = 201;
-    private static final int EXPECTED_STATUS_CODE_PUT = 200;
     private static final String EXPECTED_TITLE = "New Post";
     private static final String UPDATED_TITLE = "Updated Put";
     private static final String EXPECTED_CONTENT = "New content for new POST";
@@ -26,7 +24,6 @@ public class ApiTests {
 
     @BeforeClass
     public void beforeAll(){
-
     }
 
     @Test
@@ -38,7 +35,7 @@ public class ApiTests {
 
         postId = actualId;
 
-        softly.assertThat(response.getStatusCode()).as("status code").isEqualTo(EXPECTED_STATUS_CODE_POST);
+        softly.assertThat(response.getStatusCode()).as("status code").isEqualTo(TestData.EXPECTED_STATUS_CODE_POST);
         softly.assertThat(firstKey.get("key")).as("gt_translate_keys key").isEqualTo("rendered");
         softly.assertThat(firstKey.get("format")).as("gt_translate_keys format").isEqualTo("text");
         softly.assertThat(actualId).as("ID").isNotNull();
@@ -67,7 +64,7 @@ public class ApiTests {
         int actualId = parseInt(response.jsonPath().getString("id"));
         Map<String, String> firstKey = gtTranslateKeys.get(0);
 
-        softly.assertThat(response.getStatusCode()).as("status code").isEqualTo(EXPECTED_STATUS_CODE_PUT);
+        softly.assertThat(response.getStatusCode()).as("status code").isEqualTo(TestData.EXPECTED_STATUS_CODE_PUT);
         softly.assertThat(firstKey.get("key")).as("gt_translate_keys key").isEqualTo("rendered");
         softly.assertThat(firstKey.get("format")).as("gt_translate_keys format").isEqualTo("text");
         softly.assertThat(actualId).as("ID").isNotNull();
